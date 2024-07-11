@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pure React App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <script>
+    const buttonUpperEl = document.querySelector(".button--upper")
+    const buttonLowerEl = document.querySelector(".button--lower")
+
+    // Input Component
+    function InputArea() {
+      const [input, setInput] = React.useState("")
+
+      const [output, setOutput] = React.useState("")
+      const [mode, setMode] = React.useState("uppercase")
+
+      React.useEffect(() => {
+        let output
+        if (mode === "uppercase") {
+          output = convertUpperCase(input)
+        } else {
+          output = convertLowerCase(input)
+        }
+
+        setOutput(output)
+      }, [input, mode])
+
+      const handleInputChange = function (event) {
+        setInput(event.target.value)
+      }
+
+      function onUpperClick() {
+        setMode("uppercase")
+      }
+
+      function onLowerClick() {
+        setMode("lowercase")
+      }
+
+      function convertUpperCase(text) {
+        return text.toUpperCase()
+      }
+
+      function convertLowerCase(text) {
+        return text.toLowerCase()
+      }
+
+      return React.createElement(
+        "div",
+        { className: "main" },
+        React.createElement(
+          "textarea",
+          { id: "textarea-input", onChange: handleInputChange },
+          null
+        ),
+        React.createElement(
+          "div",
+          { className: "button-container" },
+          React.createElement(
+            "button",
+            {
+              className: `button button--upper ${
+                mode === "uppercase" ? "active" : ""
+              }`,
+              onClick: onUpperClick,
+              style: {
+                backgroundColor: mode === "uppercase" ? "red" : "gray",
+              },
+            },
+            "UPPERCASE MODE"
+          ),
+          React.createElement(
+            "button",
+            {
+              className: `button button--lower ${
+                mode === "lowercase" ? "active" : ""
+              } `,
+              onClick: onLowerClick,
+              style: {
+                backgroundColor: mode === "lowercase" ? "red" : "gray",
+              },
+            },
+            "lowercase mode"
+          )
+        ),
+        React.createElement(
+          "textarea",
+          { id: "outputEl", value: output, readOnly: true },
+          null
+        )
+      )
+    }
+
+    // Output Component
+    function TextConverter() {
+      return React.createElement(
+        "div",
+        { className: "container" },
+        React.createElement("h1", [null], "Welcome to converter App!"),
+        React.createElement(
+          "h2",
+          null,
+          "This app has been created with Pure React!"
+        ),
+        React.createElement(
+          "label",
+          null,
+          "Please put your input to convert it the way you like!"
+        ),
+        React.createElement(InputArea)
+      )
+    }
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(React.createElement(TextConverter))
+  </script>
+</html>
