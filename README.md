@@ -1,7 +1,8 @@
-# Pure React Text Converter - [Try It Live!]([https://website-name.com](https://umutyg.github.io/pure-react-vanilla-js/))
+# Pure React Text Converter
 
 <img width="838" alt="image" src="https://github.com/UmutYG/pure-react-vanilla-js/assets/76229503/c2264441-fe05-4109-b1bb-60eedcf19bc4">
 
+Check out the live version of this application [here]([https://your-live-site-url](https://umutyg.github.io/pure-react-vanilla-js/))
 
 
 ## Purpose
