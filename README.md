@@ -36,4 +36,4 @@ The Pure React Text Converter is a web application that allows users to convert 
 
 ## Screenshot
 
-![App Screenshot](./static/lowercase.png)
+<img width="816" alt="image" src="https://github.com/UmutYG/pure-react-vanilla-js/assets/76229503/d551516b-3dcf-413b-8c70-8ec3af826f17">
